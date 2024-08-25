@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../Assets/image/maintheme.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: #f0e6d2; 
+    text-shadow: 2px 2px 8px #000; 
+    overflow: hidden;   
+}
+
+.navbar{
+    font-family: "Almendra Display", serif;
+    font-weight: bold;
+    margin: 40px;
+}
+
+
+.intro_para{
+    font-size: 20px;
+    font-weight: 50;
+    font-family: "Montserrat", sans-serif;
+    margin: 40px;
+}
+
+.welcome{
+    font-size: 50px;
+    font-weight: 50;
+    font-family: "Montserrat", sans-serif;
+    color: whitesmoke;
+}
+
+
+.category{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    
+}
+
+
+.category-btn{
+    color: rgb(7, 7, 7);
+    border: none;
+    border-radius: 15px;
+    background-color: wheat;
+    height: 30px;
+    width: 90px;
+    padding: 2px;
+}
+
+.category_link{
+    font-family: "Almendra Display", serif;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
