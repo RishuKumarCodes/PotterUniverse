@@ -1,0 +1,145 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(87, 87, 87, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(92, 92, 92, 0.7);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b32;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: #f5f5f5;
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 40%;
+    height: 82vh;
+    justify-content:space-around;
+    position: relative;
+    display: flex;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-1.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.book-details {
+    position: absolute;
+    background: linear-gradient( transparent, #1b1b329f 25%, #1b1b32 75%);
+    bottom: 0;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.book-details p {
+    margin: 5px 2rem;
+}
+
+.chapters {
+    padding: 0 5rem;
+    border-radius: 10px;
+    border: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chapters h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #f5f5f5;
+}
+
+.chapters ol {
+    padding-left: 0;
+}
+
+.chapters ol li {
+    background-color: #2c2c54;
+    padding: 17px 25px ;
+    border-radius: 8px;
+    margin: 15px;
+    width: 500px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 100ms;
+    &:hover{
+        transform: scale(104%);
+    }
+}
+
+.links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.links a {
+    color: #4e9efb;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1000px) {
+    main{
+        flex-direction: column;
+    }
+    .container{
+        width: 100%;
+        max-height: 76vh;
+    }
+    .chapters{
+        padding: 0;
+        margin-top: 2rem;
+        border:none;
+        border-radius: 4rem;
+        border-top: 1px solid #444;
+        box-shadow: 0 -16px 12px -12px #ffffffa8;
+        & ol{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            & li{
+                width: 70%;
+            }
+        }
+    }
+}
+@media (min-width: 1001px) {
+    .chapters{
+        height: 82vh;
+        overflow-y: scroll;
+    }
+}
