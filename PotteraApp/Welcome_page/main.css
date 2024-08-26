@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 * {
     margin: 0;
@@ -15,52 +15,90 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    color: #f0e6d2; 
-    text-shadow: 2px 2px 8px #000; 
-    overflow: hidden;   
+    color: #f0e6d2;
+    text-shadow: 2px 2px 8px #000;
+    overflow: hidden;
+    width: 100vw;
 }
 
-.navbar{
+.navbar {
     font-family: "Almendra Display", serif;
     font-weight: bold;
     margin: 40px;
 }
 
 
-.intro_para{
+.intro_para {
     font-size: 20px;
     font-weight: 50;
     font-family: "Montserrat", sans-serif;
     margin: 40px;
 }
 
-.welcome{
+.welcome {
     font-size: 50px;
     font-weight: 50;
-    font-family: "Montserrat", sans-serif;
+    font-family: "MedievalSharp", sans-serif;
     color: whitesmoke;
 }
 
 
-.category{
+.category {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    
+    justify-content: space-evenly;
+    width: 100vw;
+    flex-wrap: wrap;
 }
 
 
-.category-btn{
+.category-btn {
+    background-color: transparent;
     color: rgb(7, 7, 7);
     border: none;
-    border-radius: 15px;
-    background-color: wheat;
-    height: 30px;
-    width: 90px;
-    padding: 2px;
+    position: relative;
+    transition: 180ms;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: #ffffff1a;
+        transition: 0.5s;
+        pointer-events: none;
+    }
+
+    &:hover:before {
+        left: -50%;
+        transform: skewX(-5deg);
+    }
+
+    & img {
+        width: max(150px, 20svw);
+    }
+
+    & p {
+        position: absolute;
+        bottom: 12%;
+        width: 100%;
+        color: white;
+        font-size: 2rem;
+
+    }
+
+    &:hover {
+        transform: rotateX(15deg) rotateY(-15deg);
+        box-shadow: 2px 2px 24px 3px #ffffff;
+        background-color: rgba(6, 6, 34, 0.295);
+        backdrop-filter: blur(10px);
+        animation: border_animation linear infinite;
+    }
 }
 
-.category_link{
+.category_link {
     font-family: "Almendra Display", serif;
     text-decoration: none;
     color: black;
