@@ -28,7 +28,24 @@
     </div>
 </main>
 
-<script src="books.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const bookData = JSON.parse(localStorage.getItem("selectedBook"));
+    
+        if (bookData) {
+            document.querySelector("#title").innerHTML = bookData.slug;
+            document.querySelector("#author").innerHTML = bookData.author;
+            document.querySelector("#release-date").innerHTML = bookData.release_date;
+            document.querySelector("#pages").innerHTML = bookData.pages;
+            document.querySelector("#dedication").innerHTML = bookData.dedication;
+            document.querySelector("#summary").innerHTML = bookData.summary;
+    
+            const bookCover = document.querySelector(".book-cover");
+            bookCover.style.backgroundImage = `url("${bookData.cover}")`;
+        }
+    });
+    
+</script>
 
 </body>
 </html>
