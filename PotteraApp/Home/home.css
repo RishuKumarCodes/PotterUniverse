@@ -20,13 +20,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
 }
 
 
 
 
-.heading {
+/* .heading {
     color: #ffeb3b; 
     font-size: 100px;
     text-align: center;
@@ -56,4 +58,32 @@ body {
     font-family: "Almendra Display", serif;
     font-weight: bold;
     font-size: larger;
+} */
+/* _---------------------------------------------------------- */
+
+.heading {
+    text-align: center;
+    filter: drop-shadow(0px 0px 20px #9f3818);
+    animation: flicker 3s infinite; 
+    & img{
+        width: max(400px ,50vw);
+    }
+}
+
+.main_button {
+    position: relative;
+    border: none;
+    width: max(130px, 15vw);
+    background-color: transparent;
+    transition: 200ms;
+   & a{
+    z-index: 1001;
+    top: 0;
+        & img{
+            width: 100%;
+        }
+   }
+   &:hover{
+    transform: scale(105%);
+   }
 }
