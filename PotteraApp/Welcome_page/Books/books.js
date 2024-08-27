@@ -24,8 +24,13 @@ async function fetchBookData(currApi) {
     const response = await fetch(currApi);
     const data = await response.json();
     const attr = data.data.attributes;
+    const chaptersData = data.data.relationships?.chapters?.data;
+    attr.chapters = chaptersData || [];
+    attr.selfLink = data.links?.self;
+    // attr.alldata = data;
     return attr;
 }
+
 
 async function handleBookClick(api) {
     const bookData = await fetchBookData(api);
