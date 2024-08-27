@@ -33,7 +33,7 @@
         const bookData = JSON.parse(localStorage.getItem("selectedBook"));
     
         if (bookData) {
-            document.querySelector("#title").innerHTML = bookData.slug;
+            document.querySelector("#title").innerHTML = bookData.slug.toUpperCase();
             document.querySelector("#author").innerHTML = bookData.author;
             document.querySelector("#release-date").innerHTML = bookData.release_date;
             document.querySelector("#pages").innerHTML = bookData.pages;
