@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="book_template.css">
+</head>
+
+<body>
+    <h1 id="title">null</h1>
+    <main>
+
+        <div class="container">
+            <div class="book-cover"></div>
+            <div class="book-details">
+                <p><strong>Author:</strong> <span id="author">null</span></p>
+                <p><strong>Release Date:</strong> <span id="release-date">null</span></p>
+                <p><strong>Pages:</strong> <span id="pages">null</span></p>
+                <p><strong>Dedication:</strong> <span id="dedication">null</span></p>
+                <p id="summary">null</p>
+            </div>
+        </div>
+        <div class="chapters">
+            <h2>Chapters</h2>
+            <ol id="chapter-list">
+                <li></li>
+            </ol>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookData = JSON.parse(localStorage.getItem("selectedBook"));
+
+            if (bookData) {
+                document.querySelector("#title").innerHTML = bookData.slug.replace(/-/g, " ").toUpperCase();
+                document.querySelector("#author").innerHTML = bookData.author;
+                document.querySelector("#release-date").innerHTML = bookData.release_date;
+                document.querySelector("#pages").innerHTML = bookData.pages;
+                document.querySelector("#dedication").innerHTML = bookData.dedication;
+                document.querySelector("#summary").innerHTML = bookData.summary;
+
+                const bookCover = document.querySelector(".book-cover");
+                bookCover.style.backgroundImage = `url("${bookData.cover}")`;
+
+
+                // ------------------For printing the chapter names ------------------------------
+
+                const chapters = bookData.chapters;
+                const chapterList = document.querySelector("#chapter-list");
+                chapterList.innerHTML = '';
+                
+                if (chapters.length > 0) {
+                    chapters.forEach((chapter, index) => {
+                        const listItem = document.createElement("li");
+                        const chApiData= `${bookData.selfLink}/chapters/${chapter.id}`;
+                        async function fetchChapterName(){
+                            const data = await fetch(chApiData);
+                            const chapterData = await data.json();
+                            const chapterName = chapterData.data.attributes.slug;
+                            console.log(chapterName)
+                            // return chapterName;
+                        }
+                        const chName = fetchChapterName();
+                        // listItem.textContent = `${chapter.id}`;
+                        listItem.textContent = chName;
+                        chapterList.appendChild(listItem);
+                    });
+                } else {
+                    chapterList.innerHTML = '<li>No chapters available</li>';
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
