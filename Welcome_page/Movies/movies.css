@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0b3d0b, #0b28ca);
+    color: #f0e6d2; 
+    text-shadow: 2px 2px 8px #000; 
+    overflow-x: hidden;   
+}
+
+.navbar{
+    font-family: "Almendra Display", serif;
+    font-weight: bold;
+    margin: 40px;
+}
+
+
+.intro_para{
+    font-size: 20px;
+    font-weight: 50;
+    font-family: "Montserrat", sans-serif;
+    margin: 40px;
+}
+
+.welcome{
+    font-size: 50px;
+    font-weight: 50;
+    font-family: "Montserrat", sans-serif;
+    color: whitesmoke;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y: auto;
+    max-height: 600px; 
+    margin: 40px;
+}
+
+.card {
+    width: 200px;
+    height: 250px; 
+    background-color: blue;
+    margin: 10px; 
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 2px 2px 3px rgb(rgb(12, 12, 12), green, rgb(35, 35, 36));
+
+}
+
+.card a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.card_1{
+    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-1.jpg');
+
+}
+
+.card_2{
+    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-2.jpg');
+}
+
+.card_3{
+    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-3.jpg');
+}
