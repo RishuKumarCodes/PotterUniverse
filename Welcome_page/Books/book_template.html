@@ -1,105 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Details</title>
-    <link rel="stylesheet" href="book_template.css">
-</head>
+    <link rel="stylesheet" href="book_template.css" />
+  </head>
 
-<body>
+  <body>
     <h1 id="title">null</h1>
     <main>
-
-        <div class="container">
-            <div class="book-cover"></div>
-            <div class="book-details">
-                <p><strong>Author:</strong> <span id="author">null</span></p>
-                <p><strong>Release Date:</strong> <span id="release-date">null</span></p>
-                <p><strong>Pages:</strong> <span id="pages">null</span></p>
-                <p><strong>Dedication:</strong> <span id="dedication">null</span></p>
-                <p id="summary">null</p>
-            </div>
+      <div class="container">
+        <div class="book-cover"></div>
+        <div class="book-details">
+          <p><strong>Author:</strong> <span id="author">null</span></p>
+          <p>
+            <strong>Release Date:</strong> <span id="release-date">null</span>
+          </p>
+          <p><strong>Pages:</strong> <span id="pages">null</span></p>
+          <p><strong>Dedication:</strong> <span id="dedication">null</span></p>
+          <p id="summary">null</p>
         </div>
-        <div class="chapters">
-            <h2>Chapters</h2>
-            <ol id="chapter-list">
-                <li>asfasdfasfasfdasdfsaf
-                    <p>summary: Harry and Hermione serve detention in the Forbidden Forest as punishment for being out
-                        of their common room after hours. They are accompanied by Hagrid and encounter dangerous
-                        creatures, including a wounded unicorn and a mysterious centaur named Firenze. During their time
-                        in the forest, they witness a hooded figure drinking the blood of the unicorn. Firenze explains
-                        that drinking unicorn blood allows a person to prolong their life, but at a terrible cost - the
-                        drinker becomes cursed. Harry begins to suspect that Snape wants to obtain the Philosopher's
-                        Stone to help Voldemort regain his strength.",
-                        "title": "The Forbidden Forest</p>
-                </li>
-            </ol>
-        </div>
+      </div>
+      <div class="chapters">
+        <h2>Chapters</h2>
+        <ol id="chapter-list">
+          <li>
+            asfasdfasfasfdasdfsaf
+            <p>
+              summary: Harry and Hermione serve detention in the Forbidden
+              Forest as punishment for being out of their common room after
+              hours. They are accompanied by Hagrid and encounter dangerous
+              creatures, including a wounded unicorn and a mysterious centaur
+              named Firenze. During their time in the forest, they witness a
+              hooded figure drinking the blood of the unicorn. Firenze explains
+              that drinking unicorn blood allows a person to prolong their life,
+              but at a terrible cost - the drinker becomes cursed. Harry begins
+              to suspect that Snape wants to obtain the Philosopher's Stone to
+              help Voldemort regain his strength.", "title": "The Forbidden
+              Forest
+            </p>
+          </li>
+        </ol>
+      </div>
     </main>
 
+    <script src="./books_data.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const bookData = JSON.parse(localStorage.getItem("selectedBook"));
+      document.addEventListener("DOMContentLoaded", () => {
+        const bookData = JSON.parse(localStorage.getItem("selectedBook"));
+       
 
-            if (bookData) {
-                document.querySelector("#title").innerHTML = bookData.slug.replace(/-/g, " ").toUpperCase();
-                document.querySelector("#author").innerHTML = bookData.author;
-                document.querySelector("#release-date").innerHTML = bookData.release_date;
-                document.querySelector("#pages").innerHTML = bookData.pages;
-                document.querySelector("#dedication").innerHTML = bookData.dedication;
-                document.querySelector("#summary").innerHTML = bookData.summary;
+        if (bookData) {
+          const bookSlug = bookData.slug;
+          document.querySelector("#title").innerHTML = bookData.slug
+            .replace(/-/g, " ")
+            .toUpperCase();
+          document.querySelector("#author").innerHTML = bookData.author;
+          document.querySelector("#release-date").innerHTML =
+            bookData.release_date;
+          document.querySelector("#pages").innerHTML = bookData.pages;
+          document.querySelector("#dedication").innerHTML = bookData.dedication;
+          document.querySelector("#summary").innerHTML = bookData.summary;
 
-                const bookCover = document.querySelector(".book-cover");
-                bookCover.style.backgroundImage = `url("${bookData.cover}")`;
+          const bookCover = document.querySelector(".book-cover");
+          bookCover.style.backgroundImage = `url("${bookData.cover}")`;
 
+          // ------------------For printing the chapter names ------------------------------
 
-                // ------------------For printing the chapter names ------------------------------
+          const chapters = bookData.chapters;
+          const chapterList = document.querySelector("#chapter-list");
+          chapterList.innerHTML = "";
 
-                const chapters = bookData.chapters;
-                const chapterList = document.querySelector("#chapter-list");
-                chapterList.innerHTML = '';
+          async function fetchChapters(bookSlug) {
+            // fetch and populate list
+            if (chapters.length > 0) {
+              for (const chapter of chapters) {
+                const listItem = document.createElement("li");
+                const chapetrId = chapter.id;
+                console.log(chapetrId);
+                const chApiData = `${bookData.selfLink}/chapters/${chapter.id}`;
 
-                async function fetchChapters() { // fetch and populate list
-                    if (chapters.length > 0) {
-                        for (const chapter of chapters) {
-                            const listItem = document.createElement("li");
-                            const chApiData = `${bookData.selfLink}/chapters/${chapter.id}`;
+                try {
+                  const response = await fetch(chApiData);
+                  const chapterData = await response.json();
+                  const chapterName = chapterData.data.attributes.slug;
+                  const refinedName = chapterName
+                    .replace(/-/g, " ")
+                    .replace(/\b\w/g, (char) => char.toUpperCase());
+                  const summary = chapterData.data.attributes.summary;
 
-                            try {
-                                const response = await fetch(chApiData);
-                                const chapterData = await response.json();
-                                const chapterName = chapterData.data.attributes.slug;
-                                const refinedName = chapterName.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-                                const summary = chapterData.data.attributes.summary;
+                  if (summary == null || summary == "") {
+                    const newSUmmary = await getChapterSummary(
+                      bookSlug,
+                      chapetrId
+                    );
+                    console.log(newSUmmary);
+                    listItem.innerHTML = `${refinedName}<p><b>Summary</b><br>${newSUmmary}</p>`;
+                  } else {
+                    listItem.innerHTML = `${refinedName}<p><b>Summary</b><br>${summary}</p>`;
+                  }
 
-                                listItem.innerHTML = `${refinedName}<p><b>Summary</b><br>${summary}</p>`;
-                                listItem.classList.add("heightSwitch");
-                                chapterList.appendChild(listItem);
-                            } catch (error) {
-                                console.error('Error fetching chapter data:', error);
-                            }
-                        }
-                    } else {
-                        chapterList.innerHTML = '<li>No chapters available</li>';
-                    }
+                  
+                  listItem.classList.add("heightSwitch");
+                  chapterList.appendChild(listItem);
+                } catch (error) {
+                  console.error("Error fetching chapter data:", error);
                 }
-                fetchChapters();
-
-                chapterList.addEventListener("click", (event) => {
-                    const target = event.target;
-                    const li = target.closest("li");
-
-                    if (li) {
-                        li.classList.toggle("heightSwitch");
-                    }
-                });
+              }
+            } else {
+              chapterList.innerHTML = "<li>No chapters available</li>";
             }
-        });
+          }
+          fetchChapters(bookSlug);
 
+          chapterList.addEventListener("click", (event) => {
+            const target = event.target;
+            const li = target.closest("li");
+
+            if (li) {
+              li.classList.toggle("heightSwitch");
+            }
+          });
+        }
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
