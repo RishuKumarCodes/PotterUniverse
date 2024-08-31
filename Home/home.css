@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../Assets/image/wp3067422-harry-potter-hd-wallpapers.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: "Almendra Display", serif;
+    color: #f0e6d2;
+    text-shadow: 2px 2px 8px #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.heading {
+    text-align: center;
+    filter: drop-shadow(0px 0px 20px #9f3818);
+    animation: flicker 3s infinite;
+
+    & img {
+        width: max(400px, 50vw);
+    }
+}
+
+.main_button {
+    position: relative;
+    border: none;
+    width: max(130px, 15vw);
+    background-color: transparent;
+    transition: 200ms;
+
+    & a {
+        z-index: 1001;
+        top: 0;
+
+        & img {
+            width: 100%;
+        }
+    }
+
+    &:hover {
+        transform: scale(105%);
+    }
+}

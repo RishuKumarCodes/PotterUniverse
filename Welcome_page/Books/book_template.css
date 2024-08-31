@@ -132,9 +132,22 @@ h1 {
             align-items: center;
             & li{
                 width: 70%;
+                
             }
         }
     }
+}
+
+ol p{
+    font-size: 1rem;
+    transition: 300ms ease;
+    color: rgb(224, 224, 224);
+}
+.heightSwitch p{
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 @media (min-width: 1001px) {
     .chapters{

@@ -27,7 +27,6 @@ async function fetchBookData(currApi) {
     const chaptersData = data.data.relationships?.chapters?.data;
     attr.chapters = chaptersData || [];
     attr.selfLink = data.links?.self;
-    // attr.alldata = data;
     return attr;
 }
 
