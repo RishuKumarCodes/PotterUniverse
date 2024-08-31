@@ -74,7 +74,7 @@
                                 const refinedName = chapterName.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
                                 const summary = chapterData.data.attributes.summary;
 
-                                listItem.innerHTML = `${refinedName}<p><b:>Summary</b:<br>${summary}</p>`;
+                                listItem.innerHTML = `${refinedName}<p><b>Summary</b><br>${summary}</p>`;
                                 listItem.classList.add("heightSwitch");
                                 chapterList.appendChild(listItem);
                             } catch (error) {

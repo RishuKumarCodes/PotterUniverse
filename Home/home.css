@@ -14,9 +14,9 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     font-family: "Almendra Display", serif;
-    color: #f0e6d2; 
-    text-shadow: 2px 2px 8px #000; 
-    overflow: hidden; 
+    color: #f0e6d2;
+    text-shadow: 2px 2px 8px #000;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,48 +25,13 @@ body {
     position: relative;
 }
 
-
-
-
-/* .heading {
-    color: #ffeb3b; 
-    font-size: 100px;
-    text-align: center;
-    text-shadow: 3px 3px 10px #000, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b; 
-    animation: flicker 3s infinite; 
-}
-
-@keyframes flicker {
-    0% { text-shadow: 3px 3px 10px #000, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b; }
-    50% { text-shadow: 3px 3px 10px #000, 0 0 30px #ffeb3b, 0 0 40px #ffeb3b; }
-    100% { text-shadow: 3px 3px 10px #000, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b; }
-}
-
-
-.main_button {
-    height: 35px;
-    width: 100px;
-    background-color: yellow;
-    border: none;
-    z-index: 1000;
-   
-}
-
-.main_page_anchor {
-    text-decoration: none;
-    color: rgb(23, 22, 22);
-    font-family: "Almendra Display", serif;
-    font-weight: bold;
-    font-size: larger;
-} */
-/* _---------------------------------------------------------- */
-
 .heading {
     text-align: center;
     filter: drop-shadow(0px 0px 20px #9f3818);
-    animation: flicker 3s infinite; 
-    & img{
-        width: max(400px ,50vw);
+    animation: flicker 3s infinite;
+
+    & img {
+        width: max(400px, 50vw);
     }
 }
 
@@ -76,14 +41,17 @@ body {
     width: max(130px, 15vw);
     background-color: transparent;
     transition: 200ms;
-   & a{
-    z-index: 1001;
-    top: 0;
-        & img{
+
+    & a {
+        z-index: 1001;
+        top: 0;
+
+        & img {
             width: 100%;
         }
-   }
-   &:hover{
-    transform: scale(105%);
-   }
+    }
+
+    &:hover {
+        transform: scale(105%);
+    }
 }

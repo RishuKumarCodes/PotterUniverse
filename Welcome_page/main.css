@@ -13,26 +13,38 @@ body {
     background-image: url("../Assets/image/maintheme.jpg");
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    color: #f0e6d2;
+    color: #f6f7e0;
+    overflow-x: hidden;
     text-shadow: 2px 2px 8px #000;
-    overflow: hidden;
     width: 100vw;
 }
+.headingContainer{
+    background: linear-gradient(to bottom, transparent , #1111118f 60%, transparent);
 
+
+}
+main{
+    display: flex;
+    justify-content: center;
+}
 .navbar {
     font-family: "Almendra Display", serif;
     font-weight: bold;
     margin: 40px;
 }
 
-
+.headingContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .intro_para {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 50;
     font-family: "Montserrat", sans-serif;
     margin: 40px;
+    text-align: center;
+    width: min(1000px , 100vw);
 }
 
 .welcome {
@@ -46,6 +58,7 @@ body {
 .category {
     display: flex;
     justify-content: space-evenly;
+    padding: 6rem;
     width: 100vw;
     flex-wrap: wrap;
 }
@@ -77,7 +90,7 @@ body {
     }
 
     & img {
-        width: max(150px, 20svw);
+        width: max(150px, 15svw);
     }
 
     & p {
@@ -103,4 +116,18 @@ body {
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+@media (max-width: 1600px) {
+    .category-btn p{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 1024px) {
+    .category{
+        padding: 0;
+        padding-top: 3rem;
+    }
+    .category-btn p{
+        font-size: 1rem;
+    }
 }
