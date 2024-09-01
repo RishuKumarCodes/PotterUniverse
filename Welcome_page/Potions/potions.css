@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient( #111 50%,#585885 100% );
+    color: #fff;
+}
+
+.header {
+    height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.bg {
+    position: absolute;
+    background-image: url('../../Assets/image/potions_bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -1; 
+}
+
+
+.header .overlay {
+    background: linear-gradient(to bottom, #00000083 70%, #111 90%);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.header p{
+    font-family: "Almendra Display", serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+.header h1 {
+    font-family: "MedievalSharp", sans-serif;
+    font-size: 5rem;
+    letter-spacing: 10px;
+    margin: 0;
+    color: #fff;
+}
+
+.header #para {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+    color: #ffffff;
+}
+
+main{
+    display: flex;
+    flex-wrap:wrap;
+    margin-top: 4rem;
+    justify-content: center;
+}
+.films {
+    margin: 1rem ;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 200ms;
+}
+.films:hover{
+    transform: scale(103%);
+    & img{
+        filter: drop-shadow(0 0 10px rgba(255, 226, 62, 0.568));
+    }
+}
+.films img{
+    width: 350px;
+}
+.films h3{
+    text-decoration: none;
+    color: white;
+    max-width: 85%;
+    text-align: center;
+    text-overflow: ellipsis;
+    margin: 0 0;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    & img{
+        opacity: 0.7;
+
+    }
+    & p{
+        top: 20%;
+        text-shadow:0 0 6px black;
+        position: absolute;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.07rem;
+        color: rgb(196, 196, 196);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header h2 {
+        font-size: 1.2rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .films h3 {
+        font-size: 1.5rem;
+    }
+}

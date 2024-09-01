@@ -1,84 +1,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-    background: linear-gradient(135deg, #0b3d0b, #0b28ca);
-    color: #f0e6d2; 
-    text-shadow: 2px 2px 8px #000; 
-    overflow-x: hidden;   
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient( #111 50%,#587185 100% );
+    color: #fff;
 }
 
-.navbar{
-    font-family: "Almendra Display", serif;
-    font-weight: bold;
-    margin: 40px;
-}
-
-
-.intro_para{
-    font-size: 20px;
-    font-weight: 50;
-    font-family: "Montserrat", sans-serif;
-    margin: 40px;
-}
-
-.welcome{
-    font-size: 50px;
-    font-weight: 50;
-    font-family: "Montserrat", sans-serif;
-    color: whitesmoke;
-}
-
-.cards {
+.header {
+    height: 80vh;
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    overflow-y: auto;
-    max-height: 600px; 
-    margin: 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.bg {
+    position: absolute;
+    background-image: url('../../Assets/image/movies_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -1; 
 }
 
-.card {
-    width: 200px;
-    height: 250px; 
-    background-color: blue;
-    margin: 10px; 
-    padding: 5px;
+
+.header .overlay {
+    background: linear-gradient(to bottom, #00000083 70%, #111 90%);
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: 2px 2px 3px rgb(rgb(12, 12, 12), green, rgb(35, 35, 36));
-
+    padding: 2rem;
+}
+.header p{
+    font-family: "Almendra Display", serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+.header h1 {
+    font-family: "MedievalSharp", sans-serif;
+    font-size: 5rem;
+    letter-spacing: 10px;
+    margin: 0;
+    color: #fff;
 }
 
-.card a{
+.header #para {
+    font-family: "Montserrat", sans-serif;
+    /* font-weight: 300; */
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+    color: #ffffff;
+}
+
+main{
+    display: flex;
+    flex-wrap:wrap;
+    margin-top: 4rem;
+    justify-content: center;
+}
+.films {
+    margin: 1rem ;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 200ms;
+}
+.films:hover{
+    transform: scale(103%);
+    & img{
+        filter: drop-shadow(0 0 10px rgba(255, 226, 62, 0.568));
+    }
+}
+.films img{
+    width: 350px;
+}
+.films h3{
     text-decoration: none;
     color: white;
+    max-width: 85%;
+    text-align: center;
+    text-overflow: ellipsis;
+    margin: 0 0;
 }
 
+footer{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    & img{
+        opacity: 0.7;
 
-.card_1{
-    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-1.jpg');
-
+    }
+    & p{
+        top: 20%;
+        text-shadow:0 0 6px black;
+        position: absolute;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.07rem;
+        color: rgb(196, 196, 196);
+    }
 }
 
-.card_2{
-    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-2.jpg');
+@media (max-width: 768px) {
+    .header {
+        height: 50vh;
+    }
 }
 
-.card_3{
-    background-image: url('https://www.wizardingworld.com/images/products/books/UK/rectangle-3.jpg');
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header h2 {
+        font-size: 1.2rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .films h3 {
+        font-size: 1.5rem;
+    }
 }
