@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -23,7 +28,7 @@ body {
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    z-index: -1; /* Adjusted z-index to -1 for visibility */
+    z-index: -1; 
 }
 
 
@@ -37,47 +42,77 @@ body {
     align-items: center;
     padding: 2rem;
 }
-
+.header p{
+    font-family: "Almendra Display", serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
 .header h1 {
-    font-size: 3rem;
+    font-family: "MedievalSharp", sans-serif;
+    font-size: 5rem;
+    letter-spacing: 10px;
     margin: 0;
     color: #fff;
 }
 
-.header h2 {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-    color: #fff;
-}
-
-.header p {
-    font-size: 1rem;
+.header #para {
+    font-family: "Montserrat", sans-serif;
+    /* font-weight: 300; */
+    font-size: 1.2rem;
     max-width: 600px;
     margin: 1rem auto 0;
     color: #ffffff;
 }
 
+main{
+    display: flex;
+    flex-wrap:wrap;
+    margin-top: 4rem;
+    justify-content: center;
+}
 .films {
-    padding: 2rem;
+    margin: 1rem ;
     text-align: center;
-    background-color: #ff0000;
-    width: 400px;
-    height: 100px;
+    cursor: pointer;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 200ms;
+}
+.films:hover{
+    transform: scale(103%);
+    & img{
+        filter: drop-shadow(0 0 10px rgba(255, 226, 62, 0.568));
+    }
+}
+.films img{
+    width: 350px;
+}
+.films h3{
+    text-decoration: none;
+    color: white;
+    max-width: 85%;
+    text-align: center;
+    text-overflow: ellipsis;
+    margin: 0 0;
 }
 
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 5rem 0;
+    & p{
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.04rem;
+        color: rgb(202, 202, 202);
+    }
+}
 
 @media (max-width: 768px) {
     .header {
         height: 50vh;
-    }
-
-    .film-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .film {
-        max-width: 90%;
     }
 }
 
