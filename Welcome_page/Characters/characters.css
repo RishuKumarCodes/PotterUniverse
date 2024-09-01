@@ -6,7 +6,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #111;
+    background: linear-gradient( #111 50%,#607b91 100% );   
     color: #fff;
 }
 
@@ -101,12 +101,19 @@ main{
 footer{
     width: 100%;
     display: flex;
+    position: relative;
     justify-content: center;
-    padding: 2rem 0 5rem 0;
+    & img{
+        opacity: 0.7;
+
+    }
     & p{
+        top: 20%;
+        text-shadow:0 0 6px black;
+        position: absolute;
         font-family: "Montserrat", sans-serif;
-        font-size: 1.04rem;
-        color: rgb(202, 202, 202);
+        font-size: 1.07rem;
+        color: rgb(196, 196, 196);
     }
 }
 
